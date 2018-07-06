@@ -2,15 +2,17 @@
 % Please edit documentation in R/sf-utils.R
 \name{sf-utils}
 \alias{sf-utils}
-\alias{st_add_point_coordinates}
+\alias{st_add_coordinates}
 \title{Utilities for 'sf'}
 \usage{
-st_add_point_coordinates(x, col_names = NULL)
+st_add_coordinates(x, col_names = NULL, fun = sf::st_centroid)
 }
 \arguments{
 \item{x}{sf object.}
 
 \item{col_names}{Column names.}
+
+\item{fun}{Function to calcuate POINT from the geometry.}
 }
 \description{
 Utilities for 'sf'
@@ -26,6 +28,14 @@ points_sf <- sf::st_sf(
   geometry = points_sfc
 )
 
-st_add_point_coordinates(points_sf)
-st_add_point_coordinates(points_sf, col_names = c("long", "lat"))
+# For POINT, add the coordinates of the points.
+st_add_coordinates(points_sf)
+st_add_coordinates(points_sf, col_names = c("long", "lat"))
+
+# For other features, add the coordinates of the centroids of them.
+nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"), quiet = TRUE)
+st_add_coordinates(nc)
+
+# You can specify other functions that return one POINT per geometry.
+st_add_coordinates(nc, fun = sf::st_point_ons_surface)
 }
