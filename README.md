@@ -3,6 +3,8 @@
 Yutani's utilities
 ==================
 
+[![Travis build status](https://travis-ci.org/yutannihilation/yutanutils.svg?branch=master)](https://travis-ci.org/yutannihilation/yutanutils)
+
 This utilities are for me, but they might be useful for you.
 
 Installation
