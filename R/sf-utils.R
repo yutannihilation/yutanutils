@@ -25,7 +25,7 @@
 #' st_add_coordinates(nc)
 #'
 #' # You can specify other functions that return one POINT per geometry.
-#' st_add_coordinates(nc, fun = sf::st_point_ons_surface)
+#' st_add_coordinates(nc, fun = sf::st_point_on_surface)
 NULL
 
 #' @rdname sf-utils
