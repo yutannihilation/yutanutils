@@ -1,0 +1,12 @@
+Package: yutanutils
+Type: Package
+Title: Yutani's Utilities
+Version: 0.1.0
+Authors@R: c(
+    person("Hiroaki", "Yutani", , "yutani.ini@gmail.com", c("aut", "cre"))
+    )
+Description: Utilities for me, but maybe also for you.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
