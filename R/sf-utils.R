@@ -22,10 +22,11 @@
 #'
 #' # For other features, add the coordinates of the centroids of them.
 #' nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"), quiet = TRUE)
-#' st_add_coordinates(nc)
+#' nc_3857 <- sf::st_transform(nc, 3857)
+#' st_add_coordinates(nc_3857)
 #'
 #' # You can specify other functions that return one POINT per geometry.
-#' st_add_coordinates(nc, fun = sf::st_point_on_surface)
+#' st_add_coordinates(nc_3857, fun = sf::st_point_on_surface)
 NULL
 
 #' @rdname sf-utils
