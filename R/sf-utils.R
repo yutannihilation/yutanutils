@@ -17,21 +17,21 @@
 #' )
 #'
 #' # For POINT, add the coordinates of the points.
-#' st_add_coordinates(points_sf)
-#' st_add_coordinates(points_sf, col_names = c("long", "lat"))
+#' coordinates_to_column(points_sf)
+#' coordinates_to_column(points_sf, col_names = c("long", "lat"))
 #'
 #' # For other features, add the coordinates of the centroids of them.
 #' nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"), quiet = TRUE)
 #' nc_3857 <- sf::st_transform(nc, 3857)
-#' st_add_coordinates(nc_3857)
+#' coordinates_to_column(nc_3857)
 #'
 #' # You can specify other functions that return one POINT per geometry.
-#' st_add_coordinates(nc_3857, fun = sf::st_point_on_surface)
+#' coordinates_to_column(nc_3857, fun = sf::st_point_on_surface)
 NULL
 
 #' @rdname sf-utils
 #' @export
-st_add_coordinates <- function(x, col_names = NULL, fun = sf::st_centroid) {
+coordinates_to_column <- function(x, col_names = NULL, fun = sf::st_centroid) {
   if (!inherits(x, "sf")) stop("x is not a sf object!", call. = FALSE)
 
   x_sfc <- sf::st_geometry(x)
