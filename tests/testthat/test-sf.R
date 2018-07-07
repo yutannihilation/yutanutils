@@ -13,6 +13,8 @@ points_sf <- sf::st_sf(
 nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"), quiet = TRUE)
 
 polygon_sf <- head(nc, 3)
+suppressWarnings(polygon_centroids_sfc <- sf::st_centroid(polygon_sf$geometry))
+
 
 test_that("coordinates_to_column() works", {
   expect_equal(coordinates_to_column(points_sf),
@@ -24,10 +26,10 @@ test_that("coordinates_to_column() works", {
   # the length of col_names is wrong
   expect_error(coordinates_to_column(points_sf, col_names = c("x")))
 
-  # sf_add_coordinates() accepts POINT
+  # sf_add_coordinates() accepts other features than POINT
   suppressWarnings(x <- coordinates_to_column(polygon_sf))
-  suppressWarnings(x2 <- sf::st_centroid(polygon_sf$geometry))
-  expect_equal(sf::st_point(c(x$X[1], x$Y[1])), x2[[1]])
-  expect_equal(sf::st_point(c(x$X[2], x$Y[2])), x2[[2]])
-  expect_equal(sf::st_point(c(x$X[3], x$Y[3])), x2[[3]])
+  x_sfc <- sf::st_sfc(purrr::pmap(x, function(X, Y, ...) sf::st_point(c(X, Y))))
+  sf::st_crs(x_sfc) <- sf::st_crs(polygon_centroids_sfc)
+  expect_equal(x_sfc, polygon_centroids_sfc)
 })
+
