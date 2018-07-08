@@ -50,7 +50,8 @@ geom_sf_label <- function(mapping = NULL,
     mapping = mapping,
     data = data,
     fun.geometry = fun.geometry,
-    geom_fun = ggplot2::geom_label
+    geom_fun = ggplot2::geom_label,
+    ...
   )
 }
 
@@ -64,6 +65,7 @@ geom_sf_label_repel <- function(mapping = NULL,
     mapping = mapping,
     data = data,
     fun.geometry = fun.geometry,
-    geom_fun = ggrepel::geom_label_repel
+    geom_fun = ggrepel::geom_label_repel,
+    ...
   )
 }
