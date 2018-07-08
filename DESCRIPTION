@@ -12,7 +12,10 @@ LazyData: true
 RoxygenNote: 6.0.1.9000
 Suggests: 
     testthat,
-    purrr
+    purrr,
+    vdiffr
 Imports: 
     sf,
-    glue
+    glue,
+    ggplot2 (>= 3.0.0),
+    ggrepel

@@ -32,4 +32,3 @@ test_that("coordinates_to_column() works", {
   sf::st_crs(x_sfc) <- sf::st_crs(polygon_centroids_sfc)
   expect_equal(x_sfc, polygon_centroids_sfc)
 })
-
