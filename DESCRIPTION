@@ -18,4 +18,5 @@ Imports:
     sf,
     glue,
     ggplot2 (>= 3.0.0),
-    ggrepel
+    ggrepel,
+    rlang
